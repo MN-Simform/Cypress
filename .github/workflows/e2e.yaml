@@ -10,13 +10,9 @@ jobs:
         run: npm install
       - name: run cypress
         uses: cypress-io/github-action@v6
-      - name: Upload Cypress videos
-        uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v2
+        if: always()
         with:
-          name: cypress-videos
-          path: Cypress/cypress/videos
-      - name: Upload Cypress screenshots (optional)
-        uses: actions/upload-artifact@v2
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots
+            name: playwright-report
+            path: Cypress/cypress/videos
+            retention-days: 30
