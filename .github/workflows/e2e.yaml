@@ -10,8 +10,13 @@ jobs:
         run: npm install      
       - name: run cypress
         uses: cypress-io/github-action@v6 
-      - name: upload cypress videos
-        uses: actions/upload-artifact@v1
+      - name: Upload Cypress videos
+        uses: actions/upload-artifact@v2
+          with:
+            name: cypress-videos
+            path: cypress/videos/**/*
+      - name: Upload Cypress screenshots (optional)
+        uses: actions/upload-artifact@v2
         with:
-          name: cypress-videos
-          path: cypress/videos
+          name: cypress-screenshots
+          path: cypress/screenshots/**/*
