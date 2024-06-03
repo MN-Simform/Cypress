@@ -13,6 +13,7 @@ module.exports = defineConfig({
       'script.crazyegg.com',
       'js.zi-scripts.com',
     ],
-    specPattern: 'cypress/intigration/*.js'
+    specPattern: 'cypress/intigration/*.js',
+    chromeWebSecurity: false
   },
 });

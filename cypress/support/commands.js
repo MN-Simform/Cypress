@@ -29,8 +29,12 @@ import '@4tw/cypress-drag-drop'
 import 'cypress-iframe';
 
 Cypress.on('uncaught:exception', (err, runnable) => {
+    console.log(err.message)
     // Ignore the specific error regarding 'msie' property being undefined
     if (err.message.includes("Cannot read properties of undefined (reading 'msie')")) {
+        return false;
+    }
+    if (err.message.includes("Cannot set properties of undefined (setting 'chrome')")) {
         return false;
     }
     // Ignore the script error from a cross-origin script
