@@ -7,14 +7,14 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
       - name: install dependencies
-        run: npm install      
+        run: npm install
       - name: run cypress
-        uses: cypress-io/github-action@v6 
+        uses: cypress-io/github-action@v6
       - name: Upload Cypress videos
         uses: actions/upload-artifact@v2
-          with:
-            name: cypress-videos
-            path: cypress/videos/**/*
+        with:
+          name: cypress-videos
+          path: cypress/videos/**/*
       - name: Upload Cypress screenshots (optional)
         uses: actions/upload-artifact@v2
         with:
