@@ -14,6 +14,7 @@ module.exports = defineConfig({
       'js.zi-scripts.com',
     ],
     specPattern: 'cypress/intigration/*.js',
-    chromeWebSecurity: false
+    chromeWebSecurity: false,
+    video: true
   },
 });
