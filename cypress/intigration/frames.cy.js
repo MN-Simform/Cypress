@@ -6,7 +6,7 @@ describe('Frame Demo', () => {
         cy.visit('https://www.globalsqa.com/demo-site/draganddrop/');
     })
 
-    it.only('Draging Image to Trash Section', () => {
+    it('Draging Image to Trash Section', { timeout: 20000 }, () => {
 
         // const dataTransfer = new DataTransfer();
 
@@ -60,7 +60,7 @@ describe('Frame Demo', () => {
         cy.iframe('iframe:eq(1)').find('#droppable').should('contain', 'Dropped!')
     })
 
-    it('Using Move()', () => {
+    it.only('Using Move()', () => {
         cy.get('.newtabs>ul>li:visible').eq(1).click();
         cy.frameLoaded('.demo-frame:visible')
         cy.iframe('iframe:eq(1)').find('#draggable:visible').move({ deltaX: 165, deltaY: 40 })
