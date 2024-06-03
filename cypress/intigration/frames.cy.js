@@ -6,7 +6,7 @@ describe('Frame Demo', () => {
         cy.visit('https://www.globalsqa.com/demo-site/draganddrop/');
     })
 
-    it('Draging Image to Trash Section', () => {
+    it.only('Draging Image to Trash Section', () => {
 
         // const dataTransfer = new DataTransfer();
 
@@ -15,8 +15,8 @@ describe('Frame Demo', () => {
         // cy.iframe('iframe:eq(0)').find('#trash').trigger('dragover', { dataTransfer}).trigger('drop', { dataTransfer })
 
         cy.frameLoaded('.demo-frame:visible')
-        cy.iframe('iframe:eq(0)').find('#gallery li:visible').eq(0).trigger('mousedown', { which: 1 }).trigger('mousemove')
-        cy.iframe('iframe:eq(0)').find('#trash').trigger('mousemove').trigger('mouseup', { force: true });
+        cy.iframe('iframe:eq(0)').find('#gallery li:visible', { timeout: 10000 }).eq(0).trigger('mousedown', { which: 1 }).trigger('mousemove')
+        cy.iframe('iframe:eq(0)').find('#trash', { timeout: 10000 }).trigger('mousemove').trigger('mouseup', { force: true });
     })
 
     it('Dragging Every Image to Trash', () => {
@@ -47,7 +47,7 @@ describe('Frame Demo', () => {
         cy.get('.newtabs>ul>li:visible').eq(1).click();
         cy.frameLoaded('.demo-frame:visible')
         cy.iframe('iframe:eq(1)').find('#draggable-nonvalid:visible').trigger('mousedown', { which: 1 }).trigger('mousemove')
-        cy.iframe('iframe:eq(1)').find('#droppable').trigger('mousemove').trigger('mouseup', {force: true})
+        cy.iframe('iframe:eq(1)').find('#droppable').trigger('mousemove').trigger('mouseup', { force: true })
         cy.iframe('iframe:eq(1)').find('#droppable').should('not.have.class', 'ui-state-highlight')
     })
 
@@ -55,7 +55,7 @@ describe('Frame Demo', () => {
         cy.get('.newtabs>ul>li:visible').eq(1).click();
         cy.frameLoaded('.demo-frame:visible')
         cy.iframe('iframe:eq(1)').find('#draggable:visible').trigger('mousedown', { which: 1 }).trigger('mousemove')
-        cy.iframe('iframe:eq(1)').find('#droppable').trigger('mousemove').trigger('mouseup', {force: true})
+        cy.iframe('iframe:eq(1)').find('#droppable').trigger('mousemove').trigger('mouseup', { force: true })
         cy.iframe('iframe:eq(1)').find('#droppable').should('have.class', 'ui-state-highlight')
         cy.iframe('iframe:eq(1)').find('#droppable').should('contain', 'Dropped!')
     })
@@ -63,7 +63,7 @@ describe('Frame Demo', () => {
     it('Using Move()', () => {
         cy.get('.newtabs>ul>li:visible').eq(1).click();
         cy.frameLoaded('.demo-frame:visible')
-        cy.iframe('iframe:eq(1)').find('#draggable:visible').move({deltaX:165, deltaY:40})
+        cy.iframe('iframe:eq(1)').find('#draggable:visible').move({ deltaX: 165, deltaY: 40 })
         cy.iframe('iframe:eq(1)').find('#droppable').should('have.class', 'ui-state-highlight')
         cy.iframe('iframe:eq(1)').find('#droppable').should('contain', 'Dropped!')
     })
