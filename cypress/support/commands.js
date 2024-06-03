@@ -37,10 +37,6 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     if (err.message.includes("Script error.")) {
         return false;
     }
-    // Ignore the cross-origin frame error
-    if (err.message.includes('Blocked a frame with origin')) {
-        return false;
-    }
     // Allow other errors to fail the test
     return true;
 });
