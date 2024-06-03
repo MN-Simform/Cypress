@@ -13,6 +13,6 @@ jobs:
       - uses: actions/upload-artifact@v2
         if: always()
         with:
-            name: playwright-report
+            name: cypress-video
             path: /home/runner/work/Cypress/Cypress/cypress/videos/
             retention-days: 30
