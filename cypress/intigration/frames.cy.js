@@ -15,7 +15,7 @@ describe('Frame Demo', () => {
         // cy.iframe('iframe:eq(0)').find('#trash').trigger('dragover', { dataTransfer}).trigger('drop', { dataTransfer })
         cy.get('.newtabs').click();
         cy.frameLoaded('.demo-frame:visible')
-        cy.iframe('iframe:eq(0)').find('#gallery li:visible', { timeout: 10000 }).eq(0).trigger('mousedown', { which: 1 }).trigger('mousemove')
+        cy.iframe('iframe:eq(0)').find('#gallery li', { timeout: 10000 }).eq(0).trigger('mousedown', { which: 1 }).trigger('mousemove')
         cy.iframe('iframe:eq(0)').find('#trash', { timeout: 10000 }).trigger('mousemove').trigger('mouseup', { force: true });
     })
 
