@@ -14,5 +14,5 @@ jobs:
         if: always()
         with:
             name: playwright-report
-            path: Cypress/cypress/videos
+            path: /home/runner/work/Cypress/Cypress/cypress/videos/
             retention-days: 30
