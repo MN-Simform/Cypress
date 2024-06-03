@@ -37,6 +37,13 @@ Cypress.on('uncaught:exception', (err, runnable) => {
     if (err.message.includes("Cannot set properties of undefined (setting 'chrome')")) {
         return false;
     }
+    // Ignore the 'Only one 'enable_page_level_ads' allowed per page' error
+    if (err.message.includes("Only one 'enable_page_level_ads' allowed per page")) {
+        return false;
+    }
+    if (err.message.includes("adsbygoogle.push() error: Only one 'enable_page_level_ads' allowed per page")) {
+        return false;
+    }
     // Ignore the script error from a cross-origin script
     if (err.message.includes("Script error.")) {
         return false;
