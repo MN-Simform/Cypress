@@ -63,8 +63,16 @@ describe('Frame Demo', () => {
     it.only('Using Move()', () => {
         cy.get('.newtabs>ul>li:visible').eq(1).click();
         cy.frameLoaded('.demo-frame:visible')
-        cy.iframe('iframe:eq(1)').find('#draggable:visible').move({ deltaX: 165, deltaY: 40 })
+        cy.iframe().find('#draggable:visible').move({ deltaX: 165, deltaY: 40 })
         cy.iframe('iframe:eq(1)').find('#droppable').should('have.class', 'ui-state-highlight')
         cy.iframe('iframe:eq(1)').find('#droppable').should('contain', 'Dropped!')
+    })
+
+    it.only('Using Move Dup()', () => {
+        cy.get('.newtabs').contains('Accepted Elements').click();
+        cy.get('.resp-tab-content-active .demo-frame').its('0.contentDocument.body').as('frameDemo')
+        cy.get('@frameDemo').find('#draggable:visible').move({ deltaX: 165, deltaY: 40 })
+        cy.get('@frameDemo').find('#droppable').should('have.class', 'ui-state-highlight')
+        cy.get('@frameDemo').find('#droppable').should('contain', 'Dropped!')
     })
 })
