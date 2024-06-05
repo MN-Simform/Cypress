@@ -1,20 +1,17 @@
 name: Cypress Cloud
-on:
-  workflow_dispatch:
+on: push
 jobs:
   cypress-run:
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
+    name: Cypress run
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
-      - name: Install dependencies
-        run: npm install
-      
-      - name: Start server and run Cypress
+
+      - name: Cypress run
         uses: cypress-io/github-action@v6
+        with:
+          record: true
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
