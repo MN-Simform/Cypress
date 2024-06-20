@@ -27,6 +27,7 @@
 import 'cypress-file-upload';
 import '@4tw/cypress-drag-drop'
 import 'cypress-iframe';
+import 'cypress-mochawesome-reporter/register';
 
 Cypress.on('uncaught:exception', (err, runnable) => {
     console.log(err.message)
